@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Music Player</string>
+
+    <!--navigation view-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="navigation_item_library">Library</string>
+    <string name="navigation_item_playlists">Playlists</string>
+    <string name="navigation_item_folders">Folders</string>
+    <string name="navigation_item_playing_queue">Playing queue</string>
+    <string name="navigation_item_now_playing">Now Playing</string>
+    <string name="navigation_item_setting">Settings</string>
+    <string name="navigation_item_about">About</string>
+    <string name="navigation_item_support">Support Developer</string>
+
+    <!--tools bar-->
+    <string name="action_shuffle_all">Shuffle All</string>
+    <string name="action_sortby">Sort by</string>
+    <string name="action_equalizer">Equalizer</string>
+    <string name="action_settings">Settings</string>
+</resources>
