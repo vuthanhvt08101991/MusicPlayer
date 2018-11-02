@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_item_library"
+            android:icon="@drawable/ic_library"
+            android:title="@string/navigation_item_library" />
+        <item
+            android:id="@+id/navigation_item_playlists"
+            android:icon="@drawable/ic_playlists"
+            android:title="@string/navigation_item_playlists" />
+        <item
+            android:id="@+id/navigation_item_folders"
+            android:icon="@drawable/ic_folder"
+            android:title="@string/navigation_item_folders" />
+        <item
+            android:id="@+id/navigation_item_playing_queue"
+            android:icon="@drawable/ic_playing_queue"
+            android:title="@string/navigation_item_playing_queue" />
+        <item
+            android:id="@+id/navigation_item_now_playing"
+            android:checkable="false"
+            android:icon="@drawable/ic_now_playing"
+            android:title="@string/navigation_item_now_playing" />
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/navigation_item_setting"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/navigation_item_setting" />
+
+        <item
+            android:id="@+id/navigation_item_about"
+            android:icon="@drawable/ic_about"
+            android:title="@string/navigation_item_about" />
+
+        <item
+            android:id="@+id/navigation_item_support"
+            android:icon="@drawable/ic_payment"
+            android:title="@string/navigation_item_support" />
+
+    </group>
+
+</menu>
