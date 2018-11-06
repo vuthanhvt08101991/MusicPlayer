@@ -9,4 +9,5 @@ package com.vuthanhvt.musicplayer.database.source;
  */
 public interface IUserLocalDataSource {
 
+    void loadDataFirstStart();
 }
