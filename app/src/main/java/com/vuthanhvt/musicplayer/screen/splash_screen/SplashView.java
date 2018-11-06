@@ -12,4 +12,5 @@ import com.vuthanhvt.musicplayer.base.BaseView;
  * Class SplashView.
  */
 public interface SplashView extends BaseView<SplashPresenter> {
+    void gotoMain();
 }

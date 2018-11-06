@@ -1,5 +1,7 @@
 package com.vuthanhvt.musicplayer.database.request;
 
+import android.util.Log;
+
 import com.vuthanhvt.musicplayer.database.source.IUserLocalDataSource;
 import com.vuthanhvt.musicplayer.database.source.UserLocalDataSource;
 
@@ -11,6 +13,8 @@ import com.vuthanhvt.musicplayer.database.source.UserLocalDataSource;
  * Class UserRepository.
  */
 public class UserRepository implements IUserLocalDataSource {
+    
+    public static final String TAG = "UserRepository";
 
     private static UserRepository mInstance = new UserRepository(UserLocalDataSource.getInstance());
 
@@ -22,5 +26,10 @@ public class UserRepository implements IUserLocalDataSource {
 
     public static UserRepository getInstance() {
         return mInstance;
+    }
+
+    @Override
+    public void loadDataFirstStart() {
+        Log.d(TAG, "loadDataFirstStart: ");
     }
 }
