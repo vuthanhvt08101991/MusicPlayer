@@ -2,6 +2,7 @@ package com.vuthanhvt.musicplayer.screen.main;
 
 import android.util.Log;
 
+import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.base.BasePresenter;
 
 /**
@@ -32,51 +33,75 @@ public class MainPresenter implements BasePresenter {
     }
 
     public void onClickItemSearch() {
-        Log.d(TAG, "onClickItemSearch: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemSearch: ");
+        }
     }
 
     public void onClickItemShare() {
-        Log.d(TAG, "onClickItemShare: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemShare: ");
+        }
     }
 
     public void onClickItemShuffleAll() {
-        Log.d(TAG, "onClickItemShuffleAll: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemShuffleAll: ");
+        }
     }
 
     public void onClickItemSortBy() {
-        Log.d(TAG, "onClickItemSortBy: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemSortBy: ");
+        }
     }
 
     public void onClickItemEqualizer() {
-        Log.d(TAG, "onClickItemEqualizer: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemEqualizer: ");
+        }
     }
 
     public void onClickItemSettings() {
-        Log.d(TAG, "onClickItemSettings: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemSettings: ");
+        }
     }
 
     public void onClickNaviLibrary() {
-        Log.d(TAG, "onClickNaviLibrary: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickNaviLibrary: ");
+        }
     }
 
     public void onClickNaviPlayLists() {
-        Log.d(TAG, "onClickNaviPlayLists: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickNaviPlayLists: ");
+        }
     }
 
     public void onClickNaviFolder() {
-        Log.d(TAG, "onClickNaviFolder: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickNaviFolder: ");
+        }
     }
 
     public void onClickNaviPlayingQueue() {
-        Log.d(TAG, "onClickNaviPlayingQueue: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickNaviPlayingQueue: ");
+        }
     }
 
     public void onClickNaviNowPlaying() {
-        Log.d(TAG, "onClickNaviNowPlaying: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickNaviNowPlaying: ");
+        }
     }
 
     public void onClickNaviAbout() {
-        Log.d(TAG, "onClickNaviAbout: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickNaviAbout: ");
+        }
     }
 
     public void onClickNaviSupport() {

@@ -1,5 +1,15 @@
 package com.vuthanhvt.musicplayer.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
+
+import com.vuthanhvt.musicplayer.Constants;
+
+import io.reactivex.annotations.NonNull;
+
 /**
  * Create by FRAMGIA\vu.anh.thanh on 06/11/2018.
  * Phone: 096.320.8650
@@ -7,13 +17,36 @@ package com.vuthanhvt.musicplayer.model;
  * <p>
  * Class Album.
  */
+
+@Entity(tableName = Constants.Album.ALBUM_TABLE,
+        foreignKeys = @ForeignKey(entity = Artist.class,
+                                  parentColumns = Constants.Artist.ARTIST_ID,
+                                  childColumns = Constants.Album.ALBUM_ARTIST_ID))
 public class Album {
 
-    private long mArtistID;
-    private String mArtistName;
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = Constants.Album.ALBUM_ID)
+    @NonNull
     private long mID;
+
+    @ColumnInfo(name = Constants.Album.ALBUM_ARTIST_ID)
+    @NonNull
+    private long mArtistID;
+
+    @ColumnInfo(name = Constants.Album.ALBUM_ARTIST_NAME)
+    @NonNull
+    private String mArtistName;
+
+    @ColumnInfo(name = Constants.Album.ALBUM_NUMBER_SONGS)
+    @NonNull
     private int mNumberSong;
+
+    @ColumnInfo(name = Constants.Album.ALBUM_TITLE)
+    @NonNull
     private String mTitle;
+
+    @ColumnInfo(name = Constants.Album.ALBUM_YEAR)
+    @NonNull
     private int mYear;
 
     public long getArtistID() {
