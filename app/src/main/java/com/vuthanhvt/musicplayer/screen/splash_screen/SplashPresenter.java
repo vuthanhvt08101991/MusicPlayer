@@ -2,6 +2,7 @@ package com.vuthanhvt.musicplayer.screen.splash_screen;
 
 import android.util.Log;
 
+import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.base.BasePresenter;
 import com.vuthanhvt.musicplayer.database.request.UserRepository;
 
@@ -42,7 +43,9 @@ public class SplashPresenter implements BasePresenter {
     }
 
     public void loadData() {
-        Log.d(TAG, "loadData: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "loadData: ");
+        }
         mUserRepository.loadDataFirstStart();
         mSplashView.gotoMain();
     }
