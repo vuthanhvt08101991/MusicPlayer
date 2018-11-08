@@ -31,6 +31,30 @@ public class Playlist {
     @NonNull
     private int mNumberSong;
 
+    public long getID() {
+        return mID;
+    }
+
+    public void setID(long mID) {
+        this.mID = mID;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String mName) {
+        this.mName = mName;
+    }
+
+    public int getNumberSong() {
+        return mNumberSong;
+    }
+
+    public void setNumberSong(int mNumberSong) {
+        this.mNumberSong = mNumberSong;
+    }
+
     public Playlist() {
         this.mID = -1;
         this.mName = "";

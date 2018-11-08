@@ -35,6 +35,38 @@ public class Artist {
     @NonNull
     private String mName;
 
+    public long getID() {
+        return mID;
+    }
+
+    public void setID(long mID) {
+        this.mID = mID;
+    }
+
+    public int getNumberAlbum() {
+        return mNumberAlbum;
+    }
+
+    public void setNumberAlbum(int mNumberAlbum) {
+        this.mNumberAlbum = mNumberAlbum;
+    }
+
+    public int getNumberSong() {
+        return mNumberSong;
+    }
+
+    public void setNumberSong(int mNumberSong) {
+        this.mNumberSong = mNumberSong;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String mName) {
+        this.mName = mName;
+    }
+
     public Artist() {
         this.mID = -1;
         this.mName = "";

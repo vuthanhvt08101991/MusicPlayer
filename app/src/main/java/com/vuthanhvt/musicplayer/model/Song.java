@@ -61,9 +61,61 @@ public class Song {
     @NonNull
     private String mTitle;
 
-    @ColumnInfo(name = Constants.Song.SONG_TRACK_NUMBER)
-    @NonNull
-    private int mTrackNumber;
+    public long getID() {
+        return mID;
+    }
+
+    public void setID(long mID) {
+        this.mID = mID;
+    }
+
+    public long getAlbumId() {
+        return mAlbumId;
+    }
+
+    public void setAlbumId(long mAlbumId) {
+        this.mAlbumId = mAlbumId;
+    }
+
+    public String getAlbumName() {
+        return mAlbumName;
+    }
+
+    public void setAlbumName(String mAlbumName) {
+        this.mAlbumName = mAlbumName;
+    }
+
+    public long getArtistID() {
+        return mArtistID;
+    }
+
+    public void setArtistID(long mArtistID) {
+        this.mArtistID = mArtistID;
+    }
+
+    public String getArtistName() {
+        return mArtistName;
+    }
+
+    public void setArtistName(String mArtistName) {
+        this.mArtistName = mArtistName;
+    }
+
+    public int getDuration() {
+        return mDuration;
+    }
+
+    public void setDuration(int mDuration) {
+        this.mDuration = mDuration;
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public void setTitle(String mTitle) {
+        this.mTitle = mTitle;
+    }
 
     public Song() {
         this.mID = -1;
@@ -73,18 +125,15 @@ public class Song {
         this.mArtistName = "";
         this.mAlbumName = "";
         this.mDuration = -1;
-        this.mTrackNumber = -1;
     }
 
-    public Song(long _id, long _albumId, long _artistId, String _title, String _artistName,
-                String _albumName, int _duration, int _trackNumber) {
-        this.mID = _id;
+    public Song(long _albumId, long _artistId, String _title, String _artistName,
+                String _albumName, int _duration) {
         this.mAlbumId = _albumId;
         this.mArtistID = _artistId;
         this.mTitle = _title;
         this.mArtistName = _artistName;
         this.mAlbumName = _albumName;
         this.mDuration = _duration;
-        this.mTrackNumber = _trackNumber;
     }
 }

@@ -55,6 +55,12 @@ public class SearchHistory {
         this.mSearchTime = mSearchTime;
     }
 
+    public SearchHistory() {
+        this.mID = -1;
+        this.mSearchString = "";
+        this.mSearchTime = "";
+    }
+
     public SearchHistory(final int id, final String searchString, final String searchTime) {
         this.mID = id;
         this.mSearchString = searchString;
