@@ -46,7 +46,7 @@ public class SplashPresenter implements BasePresenter {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "loadData: ");
         }
-        mUserRepository.loadDataFirstStart();
+        mUserRepository.loadDataFirstStart(mSplashView.context());
         mSplashView.gotoMain();
     }
 }

@@ -1,5 +1,6 @@
 package com.vuthanhvt.musicplayer.database.request;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.vuthanhvt.musicplayer.BuildConfig;
@@ -30,9 +31,10 @@ public class UserRepository implements IUserLocalDataSource {
     }
 
     @Override
-    public void loadDataFirstStart() {
+    public void loadDataFirstStart(Context context) {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "loadDataFirstStart: ");
         }
+        mUserLocalDataSource.loadDataFirstStart(context);
     }
 }
