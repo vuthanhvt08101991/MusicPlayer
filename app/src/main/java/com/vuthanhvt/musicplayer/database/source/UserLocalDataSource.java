@@ -6,8 +6,10 @@ import android.util.Log;
 import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.database.request.AlbumLoader;
 import com.vuthanhvt.musicplayer.database.data.MusicDB;
+import com.vuthanhvt.musicplayer.database.request.ArtistLoader;
 import com.vuthanhvt.musicplayer.database.request.SongLoader;
 import com.vuthanhvt.musicplayer.model.Album;
+import com.vuthanhvt.musicplayer.model.Artist;
 import com.vuthanhvt.musicplayer.model.Song;
 
 import java.util.List;
@@ -37,20 +39,39 @@ public class UserLocalDataSource implements IUserLocalDataSource {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "loadDataFirstStart: ");
         }
-        /*List<Song> mListSongs = SongLoader.getSongsForCursor(SongLoader.makeSongCursor(context));
+        /*
+        //delete all tables in DB
+        MusicDB.getMusicDB(context).getPlaylistDAOAccess().deleteAll();
+        MusicDB.getMusicDB(context).getSongDAOAccess().deleteAll();
+        MusicDB.getMusicDB(context).getAlbumDAOAccess().deleteAll();
+        MusicDB.getMusicDB(context).getArtistDAOAccess().deleteAll();
+
+        //load all artists
+        List<Artist> mListArtists = ArtistLoader.getArtistsForCursor(
+                ArtistLoader.makeArtistCursor(context, null, null));
+        int siteListArtists = mListArtists.size();
+        for (int i = 0; i < siteListArtists; i++) {
+            MusicDB.getMusicDB(context).getArtistDAOAccess().insertAll(mListArtists.get(i));
+        }
+
+        //load all albums
+        List<Album> mListAlbums = AlbumLoader.getAlbumsForCursor(
+                AlbumLoader.makeAlbumCursor(context, null, null));
+        int siteListAlbums = mListAlbums.size();
+        for (int i = 0; i < siteListAlbums; i++) {
+            MusicDB.getMusicDB(context).getAlbumDAOAccess().insertAll(mListAlbums.get(i));
+        }
+
+        //load all songs
+        List<Song> mListSongs = SongLoader.getSongsForCursor(
+                SongLoader.makeSongCursor(context, null, null));
         int siteListSongs = mListSongs.size();
         for (int i = 0; i < siteListSongs; i++) {
             MusicDB.getMusicDB(context).getSongDAOAccess().insertAll(mListSongs.get(i));
         }
 
-        List<Album> mListAlbums = AlbumLoader.getAlbumsForCursor(AlbumLoader.makeSongCursor(context));
-        int siteListAlbums = mListAlbums.size();
-        for (int i = 0; i < siteListAlbums; i++) {
-            MusicDB.getMusicDB(context).getAlbumDAOAccess().insertAll(mListAlbums.get(i));
-        }*/
-        
-        for (;;) {
-            Log.d(TAG, "loadDataFirstStart: 111111111111111111111111111");
-        }
+        */
+        //boolean b = MusicDB.getMusicDB(context).getSongDAOAccess().checkExist();
+        //Log.d(TAG, "loadDataFirstStart: b = " + b);
     }
 }

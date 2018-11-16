@@ -17,26 +17,17 @@ import io.reactivex.annotations.NonNull;
  * Class Song.
  */
 
-@Entity(tableName = Constants.Song.SONG_TABLE,
-        foreignKeys = {
-                @ForeignKey(
-                        entity = Album.class,
-                        parentColumns = Constants.Album.ALBUM_ID,
-                        childColumns = Constants.Song.SONG_ALBUM_ID
-                ),
-                @ForeignKey(
-                        entity = Artist.class,
-                        parentColumns = Constants.Artist.ARTIST_ID,
-                        childColumns = Constants.Song.SONG_ARTIST_ID
-                )
-        })
+@Entity(tableName = Constants.Song.SONG_TABLE)
 public class Song {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = Constants.Song.SONG_ID)
     @NonNull
     private long mID;
 
+    @ForeignKey(entity = Artist.class,
+            parentColumns = Constants.Artist.ARTIST_ID,
+            childColumns = Constants.Song.SONG_ARTIST_ID)
     @ColumnInfo(name = Constants.Song.SONG_ALBUM_ID)
     @NonNull
     private long mAlbumId;
@@ -45,6 +36,11 @@ public class Song {
     @NonNull
     private String mAlbumName;
 
+    @ForeignKey(
+            entity = Album.class,
+            parentColumns = Constants.Album.ALBUM_ID,
+            childColumns = Constants.Song.SONG_ALBUM_ID
+    )
     @ColumnInfo(name = Constants.Song.SONG_ARTIST_ID)
     @NonNull
     private long mArtistID;
@@ -120,20 +116,21 @@ public class Song {
     public Song() {
         this.mID = -1;
         this.mAlbumId = -1;
-        this.mArtistID = -1;
-        this.mTitle = "";
-        this.mArtistName = "";
         this.mAlbumName = "";
+        this.mArtistID = -1;
+        this.mArtistName = "";
         this.mDuration = -1;
+        this.mTitle = "";
     }
 
-    public Song(long _albumId, long _artistId, String _title, String _artistName,
-                String _albumName, int _duration) {
+    public Song(long _id, long _albumId, String _albumName,  long _artistId, String _artistName,
+                int _duration, String _title) {
+        this.mID = _id;
         this.mAlbumId = _albumId;
-        this.mArtistID = _artistId;
-        this.mTitle = _title;
-        this.mArtistName = _artistName;
         this.mAlbumName = _albumName;
+        this.mArtistID = _artistId;
+        this.mArtistName = _artistName;
         this.mDuration = _duration;
+        this.mTitle = _title;
     }
 }

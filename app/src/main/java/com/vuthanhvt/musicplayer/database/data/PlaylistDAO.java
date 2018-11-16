@@ -2,6 +2,7 @@ package com.vuthanhvt.musicplayer.database.data;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -34,4 +35,7 @@ public interface PlaylistDAO {
 
     @Delete
     void delete(Playlist playlist);
+
+    @Query("DELETE FROM " + Constants.Playlist.PLAYLIST_TABLE)
+    void deleteAll();
 }

@@ -34,4 +34,7 @@ public interface ArtistDAO {
 
     @Delete
     void delete(Artist artist);
+
+    @Query("DELETE FROM " + Constants.Artist.ARTIST_TABLE)
+    void deleteAll();
 }

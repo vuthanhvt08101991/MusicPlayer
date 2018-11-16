@@ -24,7 +24,7 @@ import io.reactivex.annotations.NonNull;
                                   childColumns = Constants.Album.ALBUM_ARTIST_ID))
 public class Album {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = Constants.Album.ALBUM_ID)
     @NonNull
     private long mID;

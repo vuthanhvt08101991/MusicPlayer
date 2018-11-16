@@ -4,25 +4,27 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore;
 
-import com.vuthanhvt.musicplayer.model.Artist;
+import com.vuthanhvt.musicplayer.model.Playlist;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Create by FRAMGIA\vu.anh.thanh on 13/11/2018.
+ * Create by FRAMGIA\vu.anh.thanh on 16/11/2018.
  * Phone: 096.320.8650
  * Email: vuthanhvt@gmail.com
  * <p>
- * Class ArtistLoader.
+ * Class PlaylistLoader.
  */
-public class ArtistLoader {
-    public static Cursor makeArtistCursor(Context context, String condition, String[] parameter) {
+public class PlaylistLoader {
+
+    public static Cursor makePlaylistsCursor(Context context, String condition, String[] parameter) {
         String[] projection = {
-                MediaStore.Audio.Artists._ID,
+                //TODO: chua xong
+                /*MediaStore.Audio.Artists._ID,
                 MediaStore.Audio.Artists.ARTIST,
                 MediaStore.Audio.Artists.NUMBER_OF_TRACKS,
-                MediaStore.Audio.Artists.NUMBER_OF_ALBUMS
+                MediaStore.Audio.Artists.NUMBER_OF_ALBUMS*/
         };
 
         Cursor cursor = context.getContentResolver().query(MediaStore.Audio.Artists.EXTERNAL_CONTENT_URI,
@@ -33,16 +35,17 @@ public class ArtistLoader {
         return cursor;
     }
 
-    public static List<Artist> getArtistsForCursor(Cursor cursor) {
-        List<Artist> arrayList = new ArrayList();
+    public static List<Playlist> getPlaylistsForCursor(Cursor cursor) {
+        List<Playlist> arrayList = new ArrayList();
         if ((cursor != null) && (cursor.moveToFirst()))
             do {
-                long id = cursor.getLong(0);
+            //TODO: chua xong
+                /*long id = cursor.getLong(0);
                 String nameArtist = cursor.getString(1);
                 int nbTracks = cursor.getInt(2);
                 int nbAlbums = cursor.getInt(3);
 
-                arrayList.add(new Artist(id, nameArtist, nbAlbums, nbTracks));
+                arrayList.add(new Playlist(id, nameArtist, nbAlbums, nbTracks));*/
             }
             while (cursor.moveToNext());
         if (cursor != null) {

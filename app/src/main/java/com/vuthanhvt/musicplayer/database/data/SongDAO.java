@@ -34,4 +34,12 @@ public interface SongDAO {
 
     @Delete
     void delete(Song song);
+
+    @Query("DELETE FROM " + Constants.Song.SONG_TABLE)
+    void deleteAll();
+
+    /*@Query("SELECT DISTINCT " + Constants.Song.SONG_TABLE +
+            " FROM " + Constants.DBConstant.DATABASE_NAME +
+            " WHERE " + Constants.Song.SONG_TABLE + " = " + Constants.Song.SONG_TABLE)
+    boolean checkExist();*/
 }

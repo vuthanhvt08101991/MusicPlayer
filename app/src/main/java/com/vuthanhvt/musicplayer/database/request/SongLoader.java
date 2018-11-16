@@ -21,12 +21,13 @@ public class SongLoader {
         String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
 
         String[] projection = {
+                MediaStore.Audio.Media._ID,
                 MediaStore.Audio.Media.ALBUM_ID,
-                MediaStore.Audio.Media.ARTIST_ID,
-                MediaStore.Audio.Media.TITLE,
-                MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media.ALBUM,
+                MediaStore.Audio.Media.ARTIST_ID,
+                MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media.DURATION,
+                MediaStore.Audio.Media.TITLE
         };
         Cursor cursor = context.getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                 projection,
@@ -41,14 +42,15 @@ public class SongLoader {
         ArrayList arrayList = new ArrayList();
         if ((cursor != null) && (cursor.moveToFirst()))
             do {
-                long albumId = cursor.getLong(0);
-                long artistId = cursor.getInt(1);
-                String title = cursor.getString(2);
-                String artist = cursor.getString(3);
-                String album = cursor.getString(4);
+                long id = cursor.getLong(0);
+                long albumId = cursor.getLong(1);
+                String album = cursor.getString(2);
+                long artistId = cursor.getInt(3);
+                String artist = cursor.getString(4);
                 int duration = cursor.getInt(5);
+                String title = cursor.getString(6);
 
-                arrayList.add(new Song(albumId, artistId, title, artist, album, duration));
+                arrayList.add(new Song(id, albumId, album, artistId, artist, duration, title));
             }
             while (cursor.moveToNext());
         if (cursor != null)
