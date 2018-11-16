@@ -18,7 +18,7 @@ import io.reactivex.annotations.NonNull;
 @Entity(tableName = Constants.Artist.ARTIST_TABLE)
 public class Artist {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = Constants.Artist.ARTIST_ID)
     @NonNull
     private long mID;

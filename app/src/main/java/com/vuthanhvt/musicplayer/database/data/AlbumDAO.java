@@ -34,4 +34,7 @@ public interface AlbumDAO {
 
     @Delete
     void delete(Album album);
+
+    @Query("DELETE FROM " + Constants.Album.ALBUM_TABLE)
+    void deleteAll();
 }
