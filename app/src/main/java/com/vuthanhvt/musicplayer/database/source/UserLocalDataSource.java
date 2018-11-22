@@ -7,9 +7,11 @@ import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.database.request.AlbumLoader;
 import com.vuthanhvt.musicplayer.database.data.MusicDB;
 import com.vuthanhvt.musicplayer.database.request.ArtistLoader;
+import com.vuthanhvt.musicplayer.database.request.PlaylistLoader;
 import com.vuthanhvt.musicplayer.database.request.SongLoader;
 import com.vuthanhvt.musicplayer.model.Album;
 import com.vuthanhvt.musicplayer.model.Artist;
+import com.vuthanhvt.musicplayer.model.Playlist;
 import com.vuthanhvt.musicplayer.model.Song;
 
 import java.util.List;
@@ -39,39 +41,50 @@ public class UserLocalDataSource implements IUserLocalDataSource {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "loadDataFirstStart: ");
         }
-        /*
-        //delete all tables in DB
-        MusicDB.getMusicDB(context).getPlaylistDAOAccess().deleteAll();
-        MusicDB.getMusicDB(context).getSongDAOAccess().deleteAll();
-        MusicDB.getMusicDB(context).getAlbumDAOAccess().deleteAll();
-        MusicDB.getMusicDB(context).getArtistDAOAccess().deleteAll();
+        MusicDB mDB = MusicDB.getMusicDB(context);
 
         //load all artists
-        List<Artist> mListArtists = ArtistLoader.getArtistsForCursor(
-                ArtistLoader.makeArtistCursor(context, null, null));
-        int siteListArtists = mListArtists.size();
-        for (int i = 0; i < siteListArtists; i++) {
-            MusicDB.getMusicDB(context).getArtistDAOAccess().insertAll(mListArtists.get(i));
+        if (mDB.getArtistDAOAccess().getAllArtists().size() == 0) {
+            Log.d(TAG, "loadDataFirstStart: getAllArtists().size() = 0");
+            List<Artist> mListArtists = ArtistLoader.getArtistsForCursor(
+                    ArtistLoader.makeArtistCursor(context, null, null));
+            int siteListArtists = mListArtists.size();
+            for (int i = 0; i < siteListArtists; i++) {
+                mDB.getArtistDAOAccess().insertAll(mListArtists.get(i));
+            }
         }
 
         //load all albums
-        List<Album> mListAlbums = AlbumLoader.getAlbumsForCursor(
-                AlbumLoader.makeAlbumCursor(context, null, null));
-        int siteListAlbums = mListAlbums.size();
-        for (int i = 0; i < siteListAlbums; i++) {
-            MusicDB.getMusicDB(context).getAlbumDAOAccess().insertAll(mListAlbums.get(i));
+        if (mDB.getAlbumDAOAccess().getAllAlbums().size() == 0) {
+            Log.d(TAG, "loadDataFirstStart: getAllAlbums().size() = 0");
+            List<Album> mListAlbums = AlbumLoader.getAlbumsForCursor(
+                    AlbumLoader.makeAlbumCursor(context, null, null));
+            int siteListAlbums = mListAlbums.size();
+            for (int i = 0; i < siteListAlbums; i++) {
+                mDB.getAlbumDAOAccess().insertAll(mListAlbums.get(i));
+            }
         }
 
         //load all songs
-        List<Song> mListSongs = SongLoader.getSongsForCursor(
-                SongLoader.makeSongCursor(context, null, null));
-        int siteListSongs = mListSongs.size();
-        for (int i = 0; i < siteListSongs; i++) {
-            MusicDB.getMusicDB(context).getSongDAOAccess().insertAll(mListSongs.get(i));
+        if (mDB.getSongDAOAccess().getAllSongs().size() == 0) {
+            Log.d(TAG, "loadDataFirstStart: getAllSongs().size() = 0");
+            List<Song> mListSongs = SongLoader.getSongsForCursor(
+                    SongLoader.makeSongCursor(context, null, null));
+            int siteListSongs = mListSongs.size();
+            for (int i = 0; i < siteListSongs; i++) {
+                mDB.getSongDAOAccess().insertAll(mListSongs.get(i));
+            }
         }
 
-        */
-        //boolean b = MusicDB.getMusicDB(context).getSongDAOAccess().checkExist();
-        //Log.d(TAG, "loadDataFirstStart: b = " + b);
+        //load all playlists
+        if (mDB.getPlaylistDAOAccess().getAllPlaylists().size() == 0) {
+            Log.d(TAG, "loadDataFirstStart: getAllPlaylists().size() = 0");
+            List<Playlist> mListPlaylists = PlaylistLoader.getPlaylistsForCursor(
+                    PlaylistLoader.makePlaylistsCursor(context, null, null));
+            int sitePlaylists = mListPlaylists.size();
+            for (int i = 0; i < sitePlaylists; i++) {
+                mDB.getPlaylistDAOAccess().insertAll(mListPlaylists.get(i));
+            }
+        }
     }
 }

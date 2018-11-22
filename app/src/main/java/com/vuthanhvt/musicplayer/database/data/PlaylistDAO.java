@@ -22,13 +22,13 @@ import java.util.List;
 public interface PlaylistDAO {
 
     @Query("SELECT * FROM " + Constants.Playlist.PLAYLIST_TABLE)
-    List<Playlist> getAllAlbums();
+    List<Playlist> getAllPlaylists();
 
     @Query("SELECT *" +
             " FROM " + Constants.Playlist.PLAYLIST_TABLE +
             " WHERE " + Constants.Playlist.PLAYLIST_NAME + " LIKE " + " :playlistName" +
             " ORDER BY " + Constants.Playlist.PLAYLIST_NAME + " ASC")
-    Playlist findArtistByName(String playlistName);
+    Playlist findPlaylistByName(String playlistName);
 
     @Insert
     void insertAll(Playlist... playlist);

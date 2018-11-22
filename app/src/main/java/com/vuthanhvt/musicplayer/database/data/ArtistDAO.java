@@ -21,7 +21,7 @@ import java.util.List;
 public interface ArtistDAO {
 
     @Query("SELECT * FROM " + Constants.Artist.ARTIST_TABLE)
-    List<Artist> getAllAlbums();
+    List<Artist> getAllArtists();
 
     @Query("SELECT *" +
             " FROM " + Constants.Artist.ARTIST_TABLE +

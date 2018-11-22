@@ -6,11 +6,14 @@
     <data>
 
         <import type="android.view.View" />
-        <import type="android.text.TextUtils" />
 
         <variable
             name="presenter"
             type="com.vuthanhvt.musicplayer.screen.main.MainPresenter" />
+
+        <variable
+            name="adapter"
+            type="com.vuthanhvt.musicplayer.screen.main.adapter.MainViewPagerAdapter" />
     </data>
 
     <android.support.v4.widget.DrawerLayout
@@ -30,39 +33,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <android.support.v4.app.FragmentTabHost
-                android:id="@android:id/tabhost"
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:minHeight="?attr/actionBarSize"
+                app:tabBackground="@color/colorWhite"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabMaxWidth="0dp"
+                app:tabSelectedTextColor="@color/text_color_light_navy"
+                app:tabTextColor="@color/greyish"
+                app:viewPager="@{ pager }"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/colorAccent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TabWidget
-                        android:id="@android:id/tabs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0"
-                        android:orientation="horizontal"
-                        android:showDividers="none" />
-
-                    <FrameLayout
-                        android:id="@android:id/tabcontent"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="0" />
-
-                    <FrameLayout
-                        android:id="@+id/realtabcontent"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
-            </android.support.v4.app.FragmentTabHost>
+                app:pagerAdapter="@{ adapter }" />
         </LinearLayout>
 
         <android.support.design.widget.NavigationView
