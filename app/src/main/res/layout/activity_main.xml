@@ -37,21 +37,19 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="6dp"
-                android:minHeight="?attr/actionBarSize"
-                app:tabBackground="@color/colorWhite"
+                app:tabBackground="@color/white_three"
                 app:tabGravity="fill"
                 app:tabIndicatorColor="@color/colorPrimary"
                 app:tabMaxWidth="0dp"
                 app:tabSelectedTextColor="@color/text_color_light_navy"
                 app:tabTextColor="@color/greyish"
-                app:viewPager="@{ pager }"/>
+                app:viewPager="@{pager}" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:pagerAdapter="@{ adapter }" />
+                app:pagerAdapter="@{adapter}" />
         </LinearLayout>
 
         <android.support.design.widget.NavigationView
