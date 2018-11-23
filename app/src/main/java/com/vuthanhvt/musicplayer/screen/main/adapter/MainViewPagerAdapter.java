@@ -45,4 +45,16 @@ public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         return mRegistedFragmentList.size();
     }
+
+    public void addFragment(Fragment fragment, String title) {
+        mRegistedFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        int realPosition = position % mFragmentTitleList.size();
+        return mFragmentTitleList.get(realPosition);
+    }
 }

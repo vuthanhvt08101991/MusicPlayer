@@ -1,22 +1,24 @@
 package com.vuthanhvt.musicplayer.screen.main;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.vuthanhvt.musicplayer.R;
 import com.vuthanhvt.musicplayer.base.BaseDataBindingActivity;
 import com.vuthanhvt.musicplayer.databinding.ActivityMainBinding;
+import com.vuthanhvt.musicplayer.screen.allalbums.AllAlbumsFragment;
+import com.vuthanhvt.musicplayer.screen.allartists.AllArtistsFragment;
+import com.vuthanhvt.musicplayer.screen.allsongs.AllSongsFragment;
+import com.vuthanhvt.musicplayer.screen.main.adapter.MainViewPagerAdapter;
 
 public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, MainPresenter>
     implements MainView, NavigationView.OnNavigationItemSelectedListener {
@@ -27,6 +29,16 @@ public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, M
     private NavigationView navigationView;
 
     private DrawerLayout drawer;
+
+    private MainViewPagerAdapter mAdapter;
+
+    private AllSongsFragment mSongsFragment;
+
+    private AllAlbumsFragment mAlbumsFragment;
+
+    private AllArtistsFragment mArtistsFragment;
+
+    private Fragment mFragmentSelected;
 
     @Override
     public int getContentViewLayoutId() {
@@ -52,6 +64,32 @@ public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, M
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        mAdapter = new MainViewPagerAdapter(getSupportFragmentManager());
+        mSongsFragment = new AllSongsFragment();
+        mAlbumsFragment = new AllAlbumsFragment();
+        mArtistsFragment = new AllArtistsFragment();
+        mAdapter.addFragment(mSongsFragment, getString(R.string.songs_title));
+        mAdapter.addFragment(mAlbumsFragment, getString(R.string.albums_title));
+        mAdapter.addFragment(mArtistsFragment, getString(R.string.artists_title));
+        mFragmentSelected = mAdapter.getItem(0);
+        mBinding.setAdapter(mAdapter);
+        mBinding.pager.addOnPageChangeListener(
+                new ViewPager.OnPageChangeListener() {
+
+                    @Override
+                    public void onPageScrolled(int position, float positionOffset,
+                                               int positionOffsetPixels) {
+                    }
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        mFragmentSelected = mAdapter.getItem(position);
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+                    }
+                });
     }
 
     @Override
@@ -59,7 +97,7 @@ public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, M
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            finish();
         }
     }
 

@@ -20,4 +20,9 @@
     <string name="action_sortby">Sort by</string>
     <string name="action_equalizer">Equalizer</string>
     <string name="action_settings">Settings</string>
+
+    <!--main activity-->
+    <string name="songs_title">Song</string>
+    <string name="albums_title">Album</string>
+    <string name="artists_title">Artist</string>
 </resources>
