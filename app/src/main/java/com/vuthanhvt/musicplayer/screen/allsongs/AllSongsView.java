@@ -1,6 +1,9 @@
 package com.vuthanhvt.musicplayer.screen.allsongs;
 
 import com.vuthanhvt.musicplayer.base.BaseView;
+import com.vuthanhvt.musicplayer.model.Song;
+
+import java.util.List;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 23/11/2018.
@@ -11,4 +14,5 @@ import com.vuthanhvt.musicplayer.base.BaseView;
  */
 public interface AllSongsView extends BaseView<AllSongsPresenter> {
 
+    void loadSongsListSuccess(List<Song> object);
 }

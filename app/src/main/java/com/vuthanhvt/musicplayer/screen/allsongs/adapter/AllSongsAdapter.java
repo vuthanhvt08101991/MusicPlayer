@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.vuthanhvt.musicplayer.base.adapter.BaseRecyclerViewAdapterBinding;
 import com.vuthanhvt.musicplayer.base.adapter.BaseViewHolderBinding;
+import com.vuthanhvt.musicplayer.databinding.ItemNoDataBinding;
 import com.vuthanhvt.musicplayer.databinding.ItemSongBinding;
 import com.vuthanhvt.musicplayer.model.Song;
 
@@ -16,22 +17,46 @@ import com.vuthanhvt.musicplayer.model.Song;
  * <p>
  * Class AllSongsAdapter.
  */
-public class AllSongsAdapter extends BaseRecyclerViewAdapterBinding<AllSongsAdapter.SongViewHolder, Song> {
-
+public class AllSongsAdapter
+        extends BaseRecyclerViewAdapterBinding<AllSongsAdapter.SongViewHolder, Song> {
 
     public AllSongsAdapter(Context context) {
         super(context);
     }
 
     @Override
+    public BaseViewHolderBinding onCreateViewHolder(ViewGroup parent, int viewType) {
+        super.onCreateViewHolder(parent, viewType);
+        BaseViewHolderBinding viewHolderBinding = getViewHolder(parent,
+                LayoutInflater.from(parent.getContext()));
+        return viewHolderBinding;
+    }
+
+    @Override
     protected SongViewHolder getViewHolder(ViewGroup parent, LayoutInflater inflater) {
-        return null;
+        return new SongViewHolder(ItemSongBinding.inflate(inflater, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(BaseViewHolderBinding holder, int position) {
+        ((AllSongsAdapter.SongViewHolder) holder).bindData(getData().get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return mList.size();
     }
 
     public class SongViewHolder extends BaseViewHolderBinding<ItemSongBinding, Song> {
 
         public SongViewHolder(ItemSongBinding binding) {
             super(binding);
+        }
+
+        @Override
+        public void bindData(Song itemSong) {
+            super.bindData(itemSong);
+            mBinding.setItemSong(itemSong);
         }
     }
 }

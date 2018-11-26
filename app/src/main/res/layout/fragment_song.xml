@@ -9,6 +9,10 @@
         <variable
             name="presenter"
             type="com.vuthanhvt.musicplayer.screen.allsongs.AllSongsPresenter" />
+
+        <variable
+            name="adapter"
+            type="com.vuthanhvt.musicplayer.screen.allsongs.adapter.AllSongsAdapter" />
     </data>
 
     <LinearLayout
