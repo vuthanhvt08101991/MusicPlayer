@@ -1,4 +1,4 @@
-package com.vuthanhvt.musicplayer.database.request;
+package com.vuthanhvt.musicplayer.database;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,6 +6,11 @@ import android.util.Log;
 import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.database.source.IUserLocalDataSource;
 import com.vuthanhvt.musicplayer.database.source.UserLocalDataSource;
+import com.vuthanhvt.musicplayer.model.Song;
+
+import java.util.List;
+
+import io.reactivex.Observable;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 02/11/2018.
@@ -36,5 +41,13 @@ public class UserRepository implements IUserLocalDataSource {
             Log.d(TAG, "loadDataFirstStart: ");
         }
         mUserLocalDataSource.loadDataFirstStart(context);
+    }
+
+    @Override
+    public List<Song> getAllSongs(Context context) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllSongs: ");
+        }
+        return mUserLocalDataSource.getAllSongs(context);
     }
 }

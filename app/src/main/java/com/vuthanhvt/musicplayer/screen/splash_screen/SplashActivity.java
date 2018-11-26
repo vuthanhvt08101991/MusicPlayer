@@ -3,11 +3,10 @@ package com.vuthanhvt.musicplayer.screen.splash_screen;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.util.Log;
 
 import com.vuthanhvt.musicplayer.R;
 import com.vuthanhvt.musicplayer.base.BaseDataBindingActivity;
-import com.vuthanhvt.musicplayer.database.request.UserRepository;
+import com.vuthanhvt.musicplayer.database.UserRepository;
 import com.vuthanhvt.musicplayer.databinding.ActivitySplashBinding;
 import com.vuthanhvt.musicplayer.screen.main.MainActivity;
 

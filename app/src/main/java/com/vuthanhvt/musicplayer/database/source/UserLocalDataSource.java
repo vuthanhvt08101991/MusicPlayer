@@ -16,6 +16,8 @@ import com.vuthanhvt.musicplayer.model.Song;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+
 /**
  * Create by FRAMGIA\vu.anh.thanh on 02/11/2018.
  * Phone: 096.320.8650
@@ -45,7 +47,6 @@ public class UserLocalDataSource implements IUserLocalDataSource {
 
         //load all artists
         if (mDB.getArtistDAOAccess().getAllArtists().size() == 0) {
-            Log.d(TAG, "loadDataFirstStart: getAllArtists().size() = 0");
             List<Artist> mListArtists = ArtistLoader.getArtistsForCursor(
                     ArtistLoader.makeArtistCursor(context, null, null));
             int siteListArtists = mListArtists.size();
@@ -56,7 +57,6 @@ public class UserLocalDataSource implements IUserLocalDataSource {
 
         //load all albums
         if (mDB.getAlbumDAOAccess().getAllAlbums().size() == 0) {
-            Log.d(TAG, "loadDataFirstStart: getAllAlbums().size() = 0");
             List<Album> mListAlbums = AlbumLoader.getAlbumsForCursor(
                     AlbumLoader.makeAlbumCursor(context, null, null));
             int siteListAlbums = mListAlbums.size();
@@ -67,7 +67,6 @@ public class UserLocalDataSource implements IUserLocalDataSource {
 
         //load all songs
         if (mDB.getSongDAOAccess().getAllSongs().size() == 0) {
-            Log.d(TAG, "loadDataFirstStart: getAllSongs().size() = 0");
             List<Song> mListSongs = SongLoader.getSongsForCursor(
                     SongLoader.makeSongCursor(context, null, null));
             int siteListSongs = mListSongs.size();
@@ -78,7 +77,6 @@ public class UserLocalDataSource implements IUserLocalDataSource {
 
         //load all playlists
         if (mDB.getPlaylistDAOAccess().getAllPlaylists().size() == 0) {
-            Log.d(TAG, "loadDataFirstStart: getAllPlaylists().size() = 0");
             List<Playlist> mListPlaylists = PlaylistLoader.getPlaylistsForCursor(
                     PlaylistLoader.makePlaylistsCursor(context, null, null));
             int sitePlaylists = mListPlaylists.size();
@@ -86,5 +84,13 @@ public class UserLocalDataSource implements IUserLocalDataSource {
                 mDB.getPlaylistDAOAccess().insertAll(mListPlaylists.get(i));
             }
         }
+    }
+
+    @Override
+    public List<Song> getAllSongs(Context context) {
+        if(BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllSongs: ");
+        }
+        return MusicDB.getMusicDB(context).getSongDAOAccess().getAllSongs();
     }
 }

@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.base.BasePresenter;
-import com.vuthanhvt.musicplayer.database.request.UserRepository;
+import com.vuthanhvt.musicplayer.database.UserRepository;
 
 import io.reactivex.disposables.CompositeDisposable;
 
