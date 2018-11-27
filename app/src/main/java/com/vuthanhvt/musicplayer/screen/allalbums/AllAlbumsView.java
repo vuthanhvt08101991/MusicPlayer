@@ -1,6 +1,9 @@
 package com.vuthanhvt.musicplayer.screen.allalbums;
 
 import com.vuthanhvt.musicplayer.base.BaseView;
+import com.vuthanhvt.musicplayer.model.Album;
+
+import java.util.List;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 23/11/2018.
@@ -11,4 +14,5 @@ import com.vuthanhvt.musicplayer.base.BaseView;
  */
 public interface AllAlbumsView extends BaseView<AllAlbumsPresenter> {
 
+    void loadAlbumsListSuccess(List<Album> mAlbums);
 }
