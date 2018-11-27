@@ -1,6 +1,13 @@
 package com.vuthanhvt.musicplayer.screen.allartists;
 
+import android.util.Log;
+
+import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.base.BasePresenter;
+import com.vuthanhvt.musicplayer.database.UserRepository;
+import com.vuthanhvt.musicplayer.model.Artist;
+
+import java.util.List;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 23/11/2018.
@@ -11,6 +18,17 @@ import com.vuthanhvt.musicplayer.base.BasePresenter;
  */
 public class AllArtistsPresenter implements BasePresenter {
 
+    public static final String TAG = "AllArtistsPresenter";
+
+    private AllArtistsView mAllArtistsView;
+
+    private UserRepository mUserRepository;
+
+    public AllArtistsPresenter(AllArtistsView mAllArtistsView) {
+        this.mAllArtistsView = mAllArtistsView;
+        mUserRepository = UserRepository.getInstance();
+    }
+
     @Override
     public void subscribe() {
 
@@ -19,5 +37,13 @@ public class AllArtistsPresenter implements BasePresenter {
     @Override
     public void unSubscribe() {
 
+    }
+
+    public void getAllArtists() {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllArtists: ");
+        }
+        List<Artist> artists = mUserRepository.getAllArtists(mAllArtistsView.context());
+        mAllArtistsView.loadArtistsListSuccess(artists);
     }
 }

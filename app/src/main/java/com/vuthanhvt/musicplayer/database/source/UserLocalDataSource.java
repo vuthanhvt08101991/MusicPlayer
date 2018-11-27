@@ -16,8 +16,6 @@ import com.vuthanhvt.musicplayer.model.Song;
 
 import java.util.List;
 
-import io.reactivex.Observable;
-
 /**
  * Create by FRAMGIA\vu.anh.thanh on 02/11/2018.
  * Phone: 096.320.8650
@@ -92,5 +90,21 @@ public class UserLocalDataSource implements IUserLocalDataSource {
             Log.d(TAG, "getAllSongs: ");
         }
         return MusicDB.getMusicDB(context).getSongDAOAccess().getAllSongs();
+    }
+
+    @Override
+    public List<Album> getAllAlbums(Context context) {
+        if(BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllAlbums: ");
+        }
+        return MusicDB.getMusicDB(context).getAlbumDAOAccess().getAllAlbums();
+    }
+
+    @Override
+    public List<Artist> getAllArtists(Context context) {
+        if(BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllArtists: ");
+        }
+        return MusicDB.getMusicDB(context).getArtistDAOAccess().getAllArtists();
     }
 }

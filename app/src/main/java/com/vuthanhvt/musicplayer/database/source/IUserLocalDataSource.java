@@ -2,11 +2,11 @@ package com.vuthanhvt.musicplayer.database.source;
 
 import android.content.Context;
 
+import com.vuthanhvt.musicplayer.model.Album;
+import com.vuthanhvt.musicplayer.model.Artist;
 import com.vuthanhvt.musicplayer.model.Song;
 
 import java.util.List;
-
-import io.reactivex.Observable;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 02/11/2018.
@@ -20,4 +20,8 @@ public interface IUserLocalDataSource {
     void loadDataFirstStart(Context context);
 
     List<Song> getAllSongs(Context context);
+
+    List<Album> getAllAlbums(Context context);
+
+    List<Artist> getAllArtists(Context context);
 }

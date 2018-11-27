@@ -26,4 +26,7 @@
     <string name="songs_title">Song</string>
     <string name="albums_title">Album</string>
     <string name="artists_title">Artist</string>
+
+    <!--artist fragment-->
+    <string name="number_song_and_album">%2d albums | %2d songs</string>
 </resources>

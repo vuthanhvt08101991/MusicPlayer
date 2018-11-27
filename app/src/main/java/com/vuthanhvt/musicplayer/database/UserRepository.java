@@ -6,6 +6,8 @@ import android.util.Log;
 import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.database.source.IUserLocalDataSource;
 import com.vuthanhvt.musicplayer.database.source.UserLocalDataSource;
+import com.vuthanhvt.musicplayer.model.Album;
+import com.vuthanhvt.musicplayer.model.Artist;
 import com.vuthanhvt.musicplayer.model.Song;
 
 import java.util.List;
@@ -49,5 +51,21 @@ public class UserRepository implements IUserLocalDataSource {
             Log.d(TAG, "getAllSongs: ");
         }
         return mUserLocalDataSource.getAllSongs(context);
+    }
+
+    @Override
+    public List<Album> getAllAlbums(Context context) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllAlbums: ");
+        }
+        return mUserLocalDataSource.getAllAlbums(context);
+    }
+
+    @Override
+    public List<Artist> getAllArtists(Context context) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllArtists: ");
+        }
+        return mUserLocalDataSource.getAllArtists(context);
     }
 }
