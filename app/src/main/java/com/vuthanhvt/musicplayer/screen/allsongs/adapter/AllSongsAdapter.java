@@ -2,6 +2,7 @@ package com.vuthanhvt.musicplayer.screen.allsongs.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.vuthanhvt.musicplayer.base.adapter.BaseRecyclerViewAdapterBinding;
@@ -51,6 +52,15 @@ public class AllSongsAdapter
 
         public SongViewHolder(ItemSongBinding binding) {
             super(binding);
+            mBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mItemListener != null) {
+                        mItemListener.onItemClick(getAdapterPosition(),
+                                mList.get(getAdapterPosition()));
+                    }
+                }
+            });
         }
 
         @Override

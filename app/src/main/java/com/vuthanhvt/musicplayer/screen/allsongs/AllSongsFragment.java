@@ -6,6 +6,7 @@ import android.util.Log;
 import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.R;
 import com.vuthanhvt.musicplayer.base.BaseDataBindingFragment;
+import com.vuthanhvt.musicplayer.base.adapter.BaseRecyclerViewAdapterBinding;
 import com.vuthanhvt.musicplayer.databinding.FragmentSongBinding;
 import com.vuthanhvt.musicplayer.model.Song;
 import com.vuthanhvt.musicplayer.screen.allsongs.adapter.AllSongsAdapter;
@@ -36,6 +37,15 @@ public class AllSongsFragment
     protected void initData() {
         mPresenter = new AllSongsPresenter(this);
         mAdapter = new AllSongsAdapter(context());
+        mAdapter.setItemListener(new BaseRecyclerViewAdapterBinding.OnRecyclerItemListener<Song>() {
+            @Override
+            public void onItemClick(int position, Song data) {
+                if (BuildConfig.DEBUG) {
+                    Log.d(TAG, "onItemClick: ");
+                }
+
+            }
+        });
         mBinding.setAdapter(mAdapter);
         mPresenter.getAllSongs();
     }
