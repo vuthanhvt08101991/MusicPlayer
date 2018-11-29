@@ -3,7 +3,6 @@ package com.vuthanhvt.musicplayer.screen.main;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -107,7 +106,9 @@ public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, M
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.view_as, menu);
+        getMenuInflater().inflate(R.menu.main_sort_by, menu);
         return true;
     }
 
@@ -126,8 +127,20 @@ public class MainActivity extends BaseDataBindingActivity<ActivityMainBinding, M
                 mPresenter.onClickItemShuffleAll();
                 break;
 
-            case R.id.action_sortby:
-                mPresenter.onClickItemSortBy();
+            case R.id.view_as_list:
+                mPresenter.onClickItemViewAsList();
+                break;
+
+            case R.id.view_as_grid:
+                mPresenter.onClickItemViewAsGrid();
+                break;
+
+            case R.id.main_sort_by_az:
+                mPresenter.onClickItemSortByAZ();
+                break;
+
+            case R.id.main_sort_by_za:
+                mPresenter.onClickItemSortByZA();
                 break;
 
             case R.id.action_equalizer:

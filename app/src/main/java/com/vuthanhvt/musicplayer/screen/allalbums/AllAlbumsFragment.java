@@ -42,6 +42,7 @@ public class AllAlbumsFragment
             public void onItemClick(int position, Album data) {
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "onItemClick: ");
+                    mPresenter.goToDetailAlbum(data);
                 }
             }
         });

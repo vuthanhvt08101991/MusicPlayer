@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="order_of_shuffle_all_item">100</integer>
+    <integer name="order_of_equalizer_item">110</integer>
+    <integer name="order_of_settings_item">111</integer>
+    <integer name="order_of_view_as_item">101</integer>
+    <integer name="order_of_sort_by_item">102</integer>
+    <integer name="order_of_detail_album_about_artist_item">97</integer>
+    <integer name="order_of_detail_album_add_queue_item">98</integer>
+    <integer name="order_of_detail_album_add_playlist_item">99</integer>
+</resources>
