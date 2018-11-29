@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/detail_album_sort_by"
+        android:orderInCategory="@integer/order_of_sort_by_item"
+        android:title="@string/action_sort_by"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/detail_album_sort_by_az"
+                android:title="@string/detail_album_sort_by_az"/>
+            <item
+                android:id="@+id/detail_album_sort_by_za"
+                android:title="@string/detail_album_sort_by_za"/>
+            <item
+                android:id="@+id/detail_album_sort_by_year"
+                android:title="@string/detail_album_sort_by_year"/>
+            <item
+                android:id="@+id/detail_album_sort_by_number_songs"
+                android:title="@string/detail_album_sort_by_number_songs"/>
+            <item
+                android:id="@+id/detail_album_sort_by_duration"
+                android:title="@string/detail_album_sort_by_duration"/>
+        </menu>
+    </item>
+</menu>

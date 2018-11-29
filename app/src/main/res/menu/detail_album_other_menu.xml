@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/detail_album_about_artist"
+        android:orderInCategory="@integer/order_of_detail_album_about_artist_item"
+        android:title="@string/detail_album_about_artist"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/detail_album_add_queue"
+        android:orderInCategory="@integer/order_of_detail_album_add_queue_item"
+        android:title="@string/detail_album_add_queue"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/detail_album_add_playlist"
+        android:orderInCategory="@integer/order_of_detail_album_add_playlist_item"
+        android:title="@string/detail_album_add_playlist"
+        app:showAsAction="never" />
+</menu>

@@ -26,6 +26,8 @@
 
         <activity android:name=".screen.search.SearchActivity" />
 
+        <activity android:name=".screen.detailalbum.DetailAlbumActivity" />
+
     </application>
 
 </manifest>

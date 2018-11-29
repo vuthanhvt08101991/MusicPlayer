@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.vuthanhvt.musicplayer.Constants;
 
@@ -22,7 +24,7 @@ import io.reactivex.annotations.NonNull;
         foreignKeys = @ForeignKey(entity = Artist.class,
                                   parentColumns = Constants.Artist.ARTIST_ID,
                                   childColumns = Constants.Album.ALBUM_ARTIST_ID))
-public class Album {
+public class Album implements Parcelable {
 
     @PrimaryKey
     @ColumnInfo(name = Constants.Album.ALBUM_ID)
@@ -116,4 +118,39 @@ public class Album {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(mID);
+        dest.writeLong(mArtistID);
+        dest.writeString(mArtistName);
+        dest.writeInt(mNumberSong);
+        dest.writeString(mTitle);
+        dest.writeInt(mYear);
+    }
+
+    protected Album(Parcel in) {
+        mID = in.readLong();
+        mArtistID = in.readLong();
+        mArtistName = in.readString();
+        mNumberSong = in.readInt();
+        mTitle = in.readString();
+        mYear = in.readInt();
+    }
+
+    public static final Creator<Album> CREATOR = new Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
 }

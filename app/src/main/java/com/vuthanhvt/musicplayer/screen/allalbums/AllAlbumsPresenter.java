@@ -1,11 +1,15 @@
 package com.vuthanhvt.musicplayer.screen.allalbums;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.vuthanhvt.musicplayer.BuildConfig;
+import com.vuthanhvt.musicplayer.Constants;
 import com.vuthanhvt.musicplayer.base.BasePresenter;
 import com.vuthanhvt.musicplayer.database.UserRepository;
 import com.vuthanhvt.musicplayer.model.Album;
+import com.vuthanhvt.musicplayer.screen.detailalbum.DetailAlbumActivity;
 
 import java.util.List;
 
@@ -43,8 +47,18 @@ public class AllAlbumsPresenter implements BasePresenter {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "getAllAlbums: ");
         }
-
         List<Album> mAlbums = mUserRepository.getAllAlbums(mAllAlbumsView.context());
         mAllAlbumsView.loadAlbumsListSuccess(mAlbums);
+    }
+
+    public void goToDetailAlbum(Album data) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "goToDetailAlbum: ");
+        }
+        Intent intent = new Intent(mAllAlbumsView.context(), DetailAlbumActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(Constants.SendIntent.SEND_DETAIL_ALBUM, data);
+        intent.putExtra(Constants.SendIntent.BUNDLE_SEND_DETAIL_ALBUM, bundle);
+        mAllAlbumsView.context().startActivity(intent);
     }
 }

@@ -50,9 +50,27 @@ public class MainPresenter implements BasePresenter {
         }
     }
 
-    public void onClickItemSortBy() {
+    public void onClickItemViewAsList() {
         if (BuildConfig.DEBUG) {
-            Log.d(TAG, "onClickItemSortBy: ");
+            Log.d(TAG, "onClickItemViewAsList: ");
+        }
+    }
+
+    public void onClickItemViewAsGrid() {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemViewAsGrid: ");
+        }
+    }
+
+    public void onClickItemSortByAZ() {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemSortByAZ: ");
+        }
+    }
+
+    public void onClickItemSortByZA() {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickItemSortByZA: ");
         }
     }
 
@@ -105,6 +123,8 @@ public class MainPresenter implements BasePresenter {
     }
 
     public void onClickNaviSupport() {
-        Log.d(TAG, "onClickNaviSupport: ");
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "onClickNaviSupport: ");
+        }
     }
 }
