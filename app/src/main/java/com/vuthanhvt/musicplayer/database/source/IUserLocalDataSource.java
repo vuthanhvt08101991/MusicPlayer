@@ -26,4 +26,8 @@ public interface IUserLocalDataSource {
     List<Artist> getAllArtists(Context context);
 
     List<Song> getAllSongsInAlbum(Context context, long albumID);
+
+    int countSongsOfSpecialArtist(Context mContext, long id);
+
+    int countAlbumsOfSpecialArtist(Context mContext, long artistID);
 }

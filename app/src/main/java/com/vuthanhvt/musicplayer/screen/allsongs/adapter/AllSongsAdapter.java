@@ -40,7 +40,7 @@ public class AllSongsAdapter
 
     @Override
     public void onBindViewHolder(BaseViewHolderBinding holder, int position) {
-        ((AllSongsAdapter.SongViewHolder) holder).bindData(getData().get(position));
+        ((SongViewHolder) holder).bindData(getData().get(position));
     }
 
     @Override

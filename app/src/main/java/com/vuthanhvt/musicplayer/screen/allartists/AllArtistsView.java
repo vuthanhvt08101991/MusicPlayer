@@ -13,5 +13,6 @@ import java.util.List;
  * Interface AllArtistsView.
  */
 public interface AllArtistsView extends BaseView<AllArtistsPresenter> {
+
     void loadArtistsListSuccess(List<Artist> artists);
 }

@@ -1,11 +1,15 @@
 package com.vuthanhvt.musicplayer.screen.allartists;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.vuthanhvt.musicplayer.BuildConfig;
+import com.vuthanhvt.musicplayer.Constants;
 import com.vuthanhvt.musicplayer.base.BasePresenter;
 import com.vuthanhvt.musicplayer.database.UserRepository;
 import com.vuthanhvt.musicplayer.model.Artist;
+import com.vuthanhvt.musicplayer.screen.detailartist.DetailArtistActivity;
 
 import java.util.List;
 
@@ -45,5 +49,16 @@ public class AllArtistsPresenter implements BasePresenter {
         }
         List<Artist> artists = mUserRepository.getAllArtists(mAllArtistsView.context());
         mAllArtistsView.loadArtistsListSuccess(artists);
+    }
+
+    public void goToDetailArtist(Artist artist) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "goToDetailArtist: ");
+        }
+        Intent intent = new Intent(mAllArtistsView.context(), DetailArtistActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(Constants.SendIntent.SEND_DETAIL_ARTIST, artist);
+        intent.putExtra(Constants.SendIntent.BUNDLE_SEND_DETAIL_ARTIST, bundle);
+        mAllArtistsView.context().startActivity(intent);
     }
 }

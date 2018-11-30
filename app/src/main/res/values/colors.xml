@@ -10,4 +10,5 @@
     <color name="text_black">#000000</color>
     <color name="text_gray">#818181</color>
     <color name="colorGray">#a3a3a3</color>
+    <color name="background_detail_artist">#f2f2f2</color>
 </resources>

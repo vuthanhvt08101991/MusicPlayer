@@ -42,6 +42,7 @@ public class AllArtistsFragment
             public void onItemClick(int position, Artist data) {
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "onItemClick: ");
+                    mPresenter.goToDetailArtist(data);
                 }
             }
         });
