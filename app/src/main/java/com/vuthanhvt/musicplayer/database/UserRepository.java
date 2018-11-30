@@ -68,4 +68,12 @@ public class UserRepository implements IUserLocalDataSource {
         }
         return mUserLocalDataSource.getAllArtists(context);
     }
+
+    @Override
+    public List<Song> getAllSongsInAlbum(Context context, long albumID) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllSongsInAlbum: ");
+        }
+        return mUserLocalDataSource.getAllSongsInAlbum(context, albumID);
+    }
 }

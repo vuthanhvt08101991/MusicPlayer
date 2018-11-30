@@ -12,8 +12,13 @@ import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.Constants;
 import com.vuthanhvt.musicplayer.R;
 import com.vuthanhvt.musicplayer.base.BaseDataBindingActivity;
+import com.vuthanhvt.musicplayer.base.adapter.BaseRecyclerViewAdapterBinding;
 import com.vuthanhvt.musicplayer.databinding.ActivityDetailAlbumBinding;
 import com.vuthanhvt.musicplayer.model.Album;
+import com.vuthanhvt.musicplayer.model.Song;
+import com.vuthanhvt.musicplayer.screen.detailalbum.adapter.SongInAlbumAdapter;
+
+import java.util.List;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 28/11/2018.
@@ -29,6 +34,8 @@ public class DetailAlbumActivity
     public static final String TAG = "DetailAlbumActivity";
 
     private Album mDetailAlbum;
+
+    private SongInAlbumAdapter mAdapter;
 
     @Override
     public int getContentViewLayoutId() {
@@ -52,20 +59,31 @@ public class DetailAlbumActivity
             }
             setupActionBar(mDetailAlbum);
             setAlbumDetails(mDetailAlbum);
-            setupListSongs(mDetailAlbum);
         }
     }
 
-    private void setupListSongs(Album mDetailAlbum) {
-        if (BuildConfig.DEBUG) {
-            Log.d(TAG, "setupListSongs: ");
-        }
-    }
-
-    private void setAlbumDetails(Album mDetailAlbum) {
+    private void setAlbumDetails(Album album) {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "setAlbumDetails: ");
         }
+        mPresenter.mArtistName.set(album.getArtistName());
+        if (album.getYear() == 0) {
+            mPresenter.mYear.set("<unknow>");
+        } else {
+            mPresenter.mYear.set(String.valueOf(album.getYear()));
+        }
+        mPresenter.mTrackNumber.set((String.valueOf(album.getNumberSong())));
+        mAdapter = new SongInAlbumAdapter(this);
+        mAdapter.setItemListener(new BaseRecyclerViewAdapterBinding.OnRecyclerItemListener<Song>() {
+            @Override
+            public void onItemClick(int position, Song data) {
+                if (BuildConfig.DEBUG) {
+                    Log.d(TAG, "onItemClick: ");
+                }
+            }
+        });
+        mBinding.setAdapter(mAdapter);
+        mPresenter.getAllSongsInAlbum(album.getID());
     }
 
     private void setupActionBar(Album album) {
@@ -156,5 +174,13 @@ public class DetailAlbumActivity
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void loadSongsListSuccess(List<Song> object) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "loadSongsListSuccess: ");
+        }
+        mAdapter.setData(object);
     }
 }

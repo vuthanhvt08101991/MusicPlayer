@@ -37,4 +37,10 @@ public interface SongDAO {
 
     @Query("DELETE FROM " + Constants.Song.SONG_TABLE)
     void deleteAll();
+
+    @Query("SELECT *" +
+            " FROM " + Constants.Song.SONG_TABLE +
+            " WHERE " + Constants.Song.SONG_ALBUM_ID + " = " + " :albumID" +
+            " ORDER BY " + Constants.Song.SONG_TITLE + " ASC")
+    List<Song> getAllSongsInAlbum(long albumID);
 }

@@ -1,6 +1,9 @@
 package com.vuthanhvt.musicplayer.screen.detailalbum;
 
 import com.vuthanhvt.musicplayer.base.BaseView;
+import com.vuthanhvt.musicplayer.model.Song;
+
+import java.util.List;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 28/11/2018.
@@ -11,5 +14,5 @@ import com.vuthanhvt.musicplayer.base.BaseView;
  */
 public interface DetailAlbumView extends BaseView<DetailAlbumPresenter> {
 
-
+    void loadSongsListSuccess(List<Song> object);
 }
