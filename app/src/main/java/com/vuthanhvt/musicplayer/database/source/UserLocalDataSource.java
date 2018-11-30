@@ -107,4 +107,12 @@ public class UserLocalDataSource implements IUserLocalDataSource {
         }
         return MusicDB.getMusicDB(context).getArtistDAOAccess().getAllArtists();
     }
+
+    @Override
+    public List<Song> getAllSongsInAlbum(Context context, long albumID) {
+        if(BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllSongsInAlbum: ");
+        }
+        return MusicDB.getMusicDB(context).getSongDAOAccess().getAllSongsInAlbum(albumID);
+    }
 }

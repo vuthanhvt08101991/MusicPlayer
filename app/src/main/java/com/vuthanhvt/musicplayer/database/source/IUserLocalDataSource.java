@@ -24,4 +24,6 @@ public interface IUserLocalDataSource {
     List<Album> getAllAlbums(Context context);
 
     List<Artist> getAllArtists(Context context);
+
+    List<Song> getAllSongsInAlbum(Context context, long albumID);
 }

@@ -1,10 +1,14 @@
 package com.vuthanhvt.musicplayer.screen.detailalbum;
 
+import android.databinding.ObservableField;
 import android.util.Log;
 
 import com.vuthanhvt.musicplayer.BuildConfig;
 import com.vuthanhvt.musicplayer.base.BasePresenter;
 import com.vuthanhvt.musicplayer.database.UserRepository;
+import com.vuthanhvt.musicplayer.model.Song;
+
+import java.util.List;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 28/11/2018.
@@ -21,9 +25,18 @@ public class DetailAlbumPresenter implements BasePresenter {
 
     private UserRepository mUserRepository;
 
+    public ObservableField<String> mArtistName;
+
+    public ObservableField<String> mYear;
+
+    public ObservableField<String> mTrackNumber;
+
     public DetailAlbumPresenter(DetailAlbumView mDetailAlbumView) {
         this.mDetailAlbumView = mDetailAlbumView;
         this.mUserRepository = UserRepository.getInstance();
+        mArtistName = new ObservableField<>();
+        mYear = new ObservableField<>();
+        mTrackNumber = new ObservableField<>();
     }
 
     @Override
@@ -112,5 +125,13 @@ public class DetailAlbumPresenter implements BasePresenter {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "onClickItemAddPlaylist: ");
         }
+    }
+
+    public void getAllSongsInAlbum(long albumID) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getAllSongsInAlbum: ");
+        }
+        List<Song> mSongs = mUserRepository.getAllSongsInAlbum(mDetailAlbumView.context(), albumID);
+        mDetailAlbumView.loadSongsListSuccess(mSongs);
     }
 }

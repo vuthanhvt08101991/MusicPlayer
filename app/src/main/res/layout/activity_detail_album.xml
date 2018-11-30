@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="presenter"
             type="com.vuthanhvt.musicplayer.screen.detailalbum.DetailAlbumPresenter" />
+
+        <variable
+            name="adapter"
+            type="com.vuthanhvt.musicplayer.screen.detailalbum.adapter.SongInAlbumAdapter" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -25,7 +30,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:contentScrim="?attr/colorPrimary"
-                android:textSize="@dimen/sp_12"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
@@ -63,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_40"
-                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_30"
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/sp_15"
                     android:text="@string/artist_of_album"/>
@@ -72,10 +76,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_20"
-                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_30"
                     android:layout_toEndOf="@id/title_artist"
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/sp_15"
+                    android:text="@{ presenter.mArtistName }"
                     tools:text="Unknow"/>
 
                 <TextView
@@ -83,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_40"
-                    android:layout_marginTop="@dimen/dp_40"
+                    android:layout_marginTop="@dimen/dp_55"
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/sp_15"
                     android:text="@string/year_of_album"/>
@@ -92,10 +97,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_20"
-                    android:layout_marginTop="@dimen/dp_40"
+                    android:layout_marginTop="@dimen/dp_55"
                     android:layout_toEndOf="@id/title_year"
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/sp_15"
+                    android:text="@{ presenter.mYear }"
                     tools:text="Unknow"/>
 
                 <TextView
@@ -103,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_40"
-                    android:layout_marginTop="@dimen/dp_65"
+                    android:layout_marginTop="@dimen/dp_80"
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/sp_15"
                     android:text="@string/track_number_of_album"/>
@@ -112,17 +118,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_20"
-                    android:layout_marginTop="@dimen/dp_65"
+                    android:layout_marginTop="@dimen/dp_80"
                     android:layout_toEndOf="@id/title_track_number"
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/sp_15"
+                    android:text="@{ presenter.mTrackNumber }"
                     tools:text="Unknow"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0_5"
+                    android:layout_marginStart="@dimen/dp_40"
+                    android:layout_marginEnd="@dimen/dp_40"
+                    android:background="@color/colorGray"
+                    android:layout_below="@id/title_track_number"
+                    android:layout_marginTop="@dimen/dp_10"/>
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/songs_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                bind:adapter="@{ adapter }"/>
         </LinearLayout>
 
 

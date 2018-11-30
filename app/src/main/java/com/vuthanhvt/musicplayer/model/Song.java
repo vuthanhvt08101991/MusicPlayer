@@ -6,6 +6,7 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
 import com.vuthanhvt.musicplayer.Constants;
+import com.vuthanhvt.musicplayer.utils.SongUtils;
 
 import io.reactivex.annotations.NonNull;
 
@@ -51,7 +52,7 @@ public class Song {
 
     @ColumnInfo(name = Constants.Song.SONG_DURATION)
     @NonNull
-    private int mDuration;
+    private long mDuration;
 
     @ColumnInfo(name = Constants.Song.SONG_TITLE)
     @NonNull
@@ -97,11 +98,11 @@ public class Song {
         this.mArtistName = mArtistName;
     }
 
-    public int getDuration() {
+    public long getDuration() {
         return mDuration;
     }
 
-    public void setDuration(int mDuration) {
+    public void setDuration(long mDuration) {
         this.mDuration = mDuration;
     }
 
@@ -111,6 +112,10 @@ public class Song {
 
     public void setTitle(String mTitle) {
         this.mTitle = mTitle;
+    }
+
+    public String convertDuration() {
+        return SongUtils.convertDurationOfSong(getDuration());
     }
 
     public Song() {
