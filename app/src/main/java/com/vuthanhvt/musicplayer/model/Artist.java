@@ -3,6 +3,8 @@ package com.vuthanhvt.musicplayer.model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.vuthanhvt.musicplayer.Constants;
 
@@ -16,7 +18,7 @@ import io.reactivex.annotations.NonNull;
  * Class Artist.
  */
 @Entity(tableName = Constants.Artist.ARTIST_TABLE)
-public class Artist {
+public class Artist implements Parcelable {
 
     @PrimaryKey
     @ColumnInfo(name = Constants.Artist.ARTIST_ID)
@@ -81,4 +83,35 @@ public class Artist {
         this.mNumberAlbum = _albumCount;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(mID);
+        dest.writeInt(mNumberAlbum);
+        dest.writeInt(mNumberSong);
+        dest.writeString(mName);
+    }
+
+    protected Artist(Parcel in) {
+        mID = in.readLong();
+        mNumberAlbum = in.readInt();
+        mNumberSong = in.readInt();
+        mName = in.readString();
+    }
+
+    public static final Creator<Artist> CREATOR = new Creator<Artist>() {
+        @Override
+        public Artist createFromParcel(Parcel in) {
+            return new Artist(in);
+        }
+
+        @Override
+        public Artist[] newArray(int size) {
+            return new Artist[size];
+        }
+    };
 }

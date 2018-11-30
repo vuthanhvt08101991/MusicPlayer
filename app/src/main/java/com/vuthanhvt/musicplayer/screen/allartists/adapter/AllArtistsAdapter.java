@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.vuthanhvt.musicplayer.R;
 import com.vuthanhvt.musicplayer.base.adapter.BaseRecyclerViewAdapterBinding;
 import com.vuthanhvt.musicplayer.base.adapter.BaseViewHolderBinding;
+import com.vuthanhvt.musicplayer.database.UserRepository;
 import com.vuthanhvt.musicplayer.databinding.ItemArtistBinding;
 import com.vuthanhvt.musicplayer.model.Artist;
 
@@ -22,8 +24,13 @@ import java.util.List;
 public class AllArtistsAdapter
         extends BaseRecyclerViewAdapterBinding<AllArtistsAdapter.ArtistViewHolder, Artist> {
 
+    private Context mContext;
+
+    private UserRepository mUserRepository;
     public AllArtistsAdapter(Context context) {
         super(context);
+        mContext = context;
+        mUserRepository = UserRepository.getInstance();
     }
 
     @Override
@@ -41,7 +48,7 @@ public class AllArtistsAdapter
 
     @Override
     public void onBindViewHolder(BaseViewHolderBinding holder, int position) {
-        ((AllArtistsAdapter.ArtistViewHolder) holder).bindData(getData().get(position));
+        ((ArtistViewHolder) holder).bindData(getData().get(position));
     }
 
     @Override
@@ -68,6 +75,10 @@ public class AllArtistsAdapter
         public void bindData(Artist artist) {
             super.bindData(artist);
             mBinding.setItemArtist(artist);
+            int nbAlbum = mUserRepository.countAlbumsOfSpecialArtist(mContext, artist.getID());
+            int nbSong = mUserRepository.countSongsOfSpecialArtist(mContext, artist.getID());
+            mBinding.setNumberAlbumAndSong(mContext.getString(
+                    R.string.number_song_and_album, nbAlbum, nbSong));
         }
     }
 }

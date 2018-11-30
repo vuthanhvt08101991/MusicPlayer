@@ -11,6 +11,10 @@
         <variable
             name="itemArtist"
             type="com.vuthanhvt.musicplayer.model.Artist" />
+
+        <variable
+            name="numberAlbumAndSong"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -66,10 +70,10 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:paddingTop="@dimen/dp_3"
-                    android:paddingStart="@dimen/dp_20"
                     android:singleLine="true"
                     android:textColor="@color/text_gray"
                     android:textSize="@dimen/sp_12"
+                    android:text="@{ numberAlbumAndSong }"
                     tools:text="99 albums | 99 songs" />
             </LinearLayout>
         </RelativeLayout>

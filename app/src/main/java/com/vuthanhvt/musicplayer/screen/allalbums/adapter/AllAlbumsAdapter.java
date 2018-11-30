@@ -39,7 +39,7 @@ public class AllAlbumsAdapter
 
     @Override
     public void onBindViewHolder(BaseViewHolderBinding holder, int position) {
-        ((AllAlbumsAdapter.AlbumViewHolder) holder).bindData(getData().get(position));
+        ((AlbumViewHolder) holder).bindData(getData().get(position));
     }
 
     @Override
