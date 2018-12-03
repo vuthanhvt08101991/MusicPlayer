@@ -48,4 +48,9 @@ public interface SongDAO {
             " FROM " + Constants.Song.SONG_TABLE +
             " WHERE " + Constants.Song.SONG_ARTIST_ID + " = " + " :artistID")
     int countSongsOfSpecialArtist(long artistID);
+
+    @Query("SELECT *" +
+            " FROM " + Constants.Song.SONG_TABLE +
+            " WHERE " + Constants.Song.SONG_ARTIST_ID + " = " + " :artistID")
+    List<Song> getListSongsOfSpecialArtist(long artistID);
 }

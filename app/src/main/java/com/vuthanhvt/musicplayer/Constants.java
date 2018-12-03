@@ -64,5 +64,7 @@ public class Constants {
         public static final String BUNDLE_SEND_DETAIL_ALBUM = "BUNDLE_SEND_DETAIL_ALBUM";
         public static final String SEND_DETAIL_ARTIST = "SEND_DETAIL_ARTIST";
         public static final String BUNDLE_SEND_DETAIL_ARTIST = "BUNDLE_SEND_DETAIL_ARTIST";
+        public static final String SEND_NUMBER_ALBUM = "SEND_NUMBER_ALBUM";
+        public static final String SEND_NUMBER_SONG = "SEND_NUMBER_SONG";
     }
 }

@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class AllArtistsFragment
         extends BaseDataBindingFragment<FragmentArtistBinding, AllArtistsPresenter>
-        implements AllArtistsView {
+        implements AllArtistsView, AllArtistsAdapter.SendDetailArtistListener {
 
     public static final String TAG = "AllArtistsFragment";
 
@@ -37,15 +37,7 @@ public class AllArtistsFragment
     protected void initData() {
         mPresenter = new AllArtistsPresenter(this);
         mAdapter = new AllArtistsAdapter(context());
-        mAdapter.setItemListener(new BaseRecyclerViewAdapterBinding.OnRecyclerItemListener<Artist>() {
-            @Override
-            public void onItemClick(int position, Artist data) {
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "onItemClick: ");
-                    mPresenter.goToDetailArtist(data);
-                }
-            }
-        });
+        mAdapter.setSendDetailArtistListener(this);
         mBinding.setAdapter(mAdapter);
         mPresenter.getAllArtists();
     }
@@ -61,5 +53,13 @@ public class AllArtistsFragment
             Log.d(TAG, "loadArtistsListSuccess: ");
         }
         mAdapter.setData(artists);
+    }
+
+    @Override
+    public void sendDetailArtistListener(Artist artist, int nbAlbum, int nbSong) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "sendDetailArtistListener: ");
+        }
+        mPresenter.goToDetailArtist(artist, nbAlbum, nbSong);
     }
 }

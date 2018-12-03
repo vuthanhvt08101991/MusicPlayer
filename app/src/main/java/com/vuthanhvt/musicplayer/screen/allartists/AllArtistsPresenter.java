@@ -51,13 +51,15 @@ public class AllArtistsPresenter implements BasePresenter {
         mAllArtistsView.loadArtistsListSuccess(artists);
     }
 
-    public void goToDetailArtist(Artist artist) {
+    public void goToDetailArtist(Artist artist, int nbAlbum, int nbSong) {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "goToDetailArtist: ");
         }
         Intent intent = new Intent(mAllArtistsView.context(), DetailArtistActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable(Constants.SendIntent.SEND_DETAIL_ARTIST, artist);
+        bundle.putInt(Constants.SendIntent.SEND_NUMBER_ALBUM, nbAlbum);
+        bundle.putInt(Constants.SendIntent.SEND_NUMBER_SONG, nbSong);
         intent.putExtra(Constants.SendIntent.BUNDLE_SEND_DETAIL_ARTIST, bundle);
         mAllArtistsView.context().startActivity(intent);
     }

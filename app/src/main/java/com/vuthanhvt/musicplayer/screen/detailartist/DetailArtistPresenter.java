@@ -1,7 +1,17 @@
 package com.vuthanhvt.musicplayer.screen.detailartist;
 
+import android.databinding.ObservableField;
+import android.util.Log;
+
+import com.vuthanhvt.musicplayer.BuildConfig;
+import com.vuthanhvt.musicplayer.R;
 import com.vuthanhvt.musicplayer.base.BasePresenter;
 import com.vuthanhvt.musicplayer.database.UserRepository;
+import com.vuthanhvt.musicplayer.model.Album;
+import com.vuthanhvt.musicplayer.model.Artist;
+import com.vuthanhvt.musicplayer.model.Song;
+
+import java.util.List;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 30/11/2018.
@@ -18,9 +28,15 @@ public class DetailArtistPresenter implements BasePresenter {
 
     private DetailArtistView mDetailArtistView;
 
+    public ObservableField<String> mNumberAlbum;
+
+    public ObservableField<String> mNumberSong;
+
     public DetailArtistPresenter(DetailArtistView mDetailArtistView) {
         this.mDetailArtistView = mDetailArtistView;
         this.mUserRepository = UserRepository.getInstance();
+        mNumberAlbum = new ObservableField<>();
+        mNumberSong = new ObservableField<>();
     }
 
     @Override
@@ -30,6 +46,17 @@ public class DetailArtistPresenter implements BasePresenter {
 
     @Override
     public void unSubscribe() {
+
+    }
+
+    public void setDetailArtist(Artist artist, int nbAlbum, int nbSong) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "setDetailArtist: ");
+        }
+        List<Album> albums = mUserRepository.getListAlbumsOfSpecialArtist(mDetailArtistView.context(),
+                artist.getID());
+        List<Song> songs = mUserRepository.getListSongsOfSpecialArtist(mDetailArtistView.context(),
+                artist.getID());
 
     }
 }

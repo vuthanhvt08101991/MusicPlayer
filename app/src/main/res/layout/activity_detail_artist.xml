@@ -17,10 +17,6 @@
         <variable
             name="songAdapter"
             type="com.vuthanhvt.musicplayer.screen.detailartist.adapter.NumberSongInArtistAdapter" />
-
-        <variable
-            name="numberAlbum"
-            type="String" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -93,7 +89,7 @@
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/sp_15"
                         android:textColor="@color/text_black"
-                        android:text="@{ numberAlbum }"
+                        android:text="@{ presenter.mNumberAlbum }"
                         android:background="@color/colorWhite"
                         tools:text="Albums (0)"/>
                 </RelativeLayout>
@@ -132,7 +128,7 @@
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/sp_15"
                         android:textColor="@color/text_black"
-                        android:text="@{ numberAlbum }"
+                        android:text="@{ presenter.mNumberSong }"
                         android:background="@color/colorWhite"
                         tools:text="Songs (0)"/>
                 </RelativeLayout>
