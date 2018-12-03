@@ -30,4 +30,8 @@ public interface IUserLocalDataSource {
     int countSongsOfSpecialArtist(Context mContext, long id);
 
     int countAlbumsOfSpecialArtist(Context mContext, long artistID);
+
+    List<Album> getListAlbumsOfSpecialArtist (Context context, long artistID);
+
+    List<Song> getListSongsOfSpecialArtist (Context context, long artistID);
 }

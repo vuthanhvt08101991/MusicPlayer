@@ -42,4 +42,9 @@ public interface AlbumDAO {
             " FROM " + Constants.Album.ALBUM_TABLE +
             " WHERE " + Constants.Album.ALBUM_ARTIST_ID + " = " + " :artistID")
     int countAlbumsOfSpecialArtist(long artistID);
+
+    @Query("SELECT *" +
+            " FROM " + Constants.Album.ALBUM_TABLE +
+            " WHERE " + Constants.Album.ALBUM_ARTIST_ID + " = " + " :artistID")
+    List<Album> getListAlbumsOfSpecialArtist(long artistID);
 }

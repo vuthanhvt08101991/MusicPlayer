@@ -131,4 +131,20 @@ public class UserLocalDataSource implements IUserLocalDataSource {
         }
         return MusicDB.getMusicDB(context).getAlbumDAOAccess().countAlbumsOfSpecialArtist(artistID);
     }
+
+    @Override
+    public List<Album> getListAlbumsOfSpecialArtist(Context context, long artistID) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getListAlbumsOfSpecialArtist: ");
+        }
+        return MusicDB.getMusicDB(context).getAlbumDAOAccess().getListAlbumsOfSpecialArtist(artistID);
+    }
+
+    @Override
+    public List<Song> getListSongsOfSpecialArtist(Context context, long artistID) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getListSongsOfSpecialArtist: ");
+        }
+        return MusicDB.getMusicDB(context).getSongDAOAccess().getListSongsOfSpecialArtist(artistID);
+    }
 }

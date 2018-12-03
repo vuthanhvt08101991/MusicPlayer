@@ -86,10 +86,26 @@ public class UserRepository implements IUserLocalDataSource {
     }
 
     @Override
-    public int countAlbumsOfSpecialArtist(Context mContext, long artistID) {
+    public int countAlbumsOfSpecialArtist(Context context, long artistID) {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "countAlbumsOfSpecialArtist: ");
         }
-        return mUserLocalDataSource.countAlbumsOfSpecialArtist(mContext, artistID);
+        return mUserLocalDataSource.countAlbumsOfSpecialArtist(context, artistID);
+    }
+
+    @Override
+    public List<Album> getListAlbumsOfSpecialArtist(Context context, long artistID) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getListAlbumsOfSpecialArtist: ");
+        }
+        return mUserLocalDataSource.getListAlbumsOfSpecialArtist(context, artistID);
+    }
+
+    @Override
+    public List<Song> getListSongsOfSpecialArtist(Context context, long artistID) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "getListSongsOfSpecialArtist: ");
+        }
+        return mUserLocalDataSource.getListSongsOfSpecialArtist(context, artistID);
     }
 }

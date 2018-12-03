@@ -50,4 +50,8 @@
     <string name="artist_of_album">Artist:</string>
     <string name="year_of_album">Year:</string>
     <string name="track_number_of_album">Track number:</string>
+
+    <!--detail artist-->
+    <string name="number_album">Albums (%d)</string>
+    <string name="number_song">Songs (%d)</string>
 </resources>

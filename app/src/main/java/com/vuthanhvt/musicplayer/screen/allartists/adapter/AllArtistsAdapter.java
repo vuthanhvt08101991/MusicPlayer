@@ -26,11 +26,17 @@ public class AllArtistsAdapter
 
     private Context mContext;
 
+    private SendDetailArtistListener mSendDetailArtistListener;
+
     private UserRepository mUserRepository;
     public AllArtistsAdapter(Context context) {
         super(context);
         mContext = context;
         mUserRepository = UserRepository.getInstance();
+    }
+
+    public void setSendDetailArtistListener(SendDetailArtistListener mListener) {
+        this.mSendDetailArtistListener = mListener;
     }
 
     @Override
@@ -58,14 +64,17 @@ public class AllArtistsAdapter
 
     public class ArtistViewHolder extends BaseViewHolderBinding<ItemArtistBinding, Artist> {
 
+        private int nbAlbum;
+
+        private int nbSong;
+
         public ArtistViewHolder(ItemArtistBinding binding) {
             super(binding);
             mBinding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(mItemListener != null) {
-                        mItemListener.onItemClick(getAdapterPosition(),
-                                mList.get(getAdapterPosition()));
+                    if(mSendDetailArtistListener != null) {
+                        mSendDetailArtistListener.sendDetailArtistListener(mList.get(getAdapterPosition()), nbAlbum, nbSong);
                     }
                 }
             });
@@ -75,10 +84,14 @@ public class AllArtistsAdapter
         public void bindData(Artist artist) {
             super.bindData(artist);
             mBinding.setItemArtist(artist);
-            int nbAlbum = mUserRepository.countAlbumsOfSpecialArtist(mContext, artist.getID());
-            int nbSong = mUserRepository.countSongsOfSpecialArtist(mContext, artist.getID());
+            nbAlbum = mUserRepository.countAlbumsOfSpecialArtist(mContext, artist.getID());
+            nbSong = mUserRepository.countSongsOfSpecialArtist(mContext, artist.getID());
             mBinding.setNumberAlbumAndSong(mContext.getString(
                     R.string.number_song_and_album, nbAlbum, nbSong));
         }
+    }
+
+    public interface SendDetailArtistListener {
+        void sendDetailArtistListener(Artist artist, int nbAlbum, int nbSong);
     }
 }
