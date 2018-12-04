@@ -44,11 +44,6 @@ public interface SongDAO {
             " ORDER BY " + Constants.Song.SONG_TITLE + " ASC")
     List<Song> getAllSongsInAlbum(long albumID);
 
-    @Query("SELECT COUNT(*)" +
-            " FROM " + Constants.Song.SONG_TABLE +
-            " WHERE " + Constants.Song.SONG_ARTIST_ID + " = " + " :artistID")
-    int countSongsOfSpecialArtist(long artistID);
-
     @Query("SELECT *" +
             " FROM " + Constants.Song.SONG_TABLE +
             " WHERE " + Constants.Song.SONG_ARTIST_ID + " = " + " :artistID")

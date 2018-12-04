@@ -49,7 +49,7 @@ public class DetailArtistPresenter implements BasePresenter {
 
     }
 
-    public void setDetailArtist(Artist artist, int nbAlbum, int nbSong) {
+    public void getDetailArtist(Artist artist, int nbAlbum, int nbSong) {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "setDetailArtist: ");
         }
@@ -57,6 +57,9 @@ public class DetailArtistPresenter implements BasePresenter {
                 artist.getID());
         List<Song> songs = mUserRepository.getListSongsOfSpecialArtist(mDetailArtistView.context(),
                 artist.getID());
-
+        if (nbAlbum != albums.size() || nbSong != songs.size()) {
+            return;
+        }
+        mDetailArtistView.getDetailArtistSuccess(albums, songs);
     }
 }

@@ -12,11 +12,11 @@
 
         <variable
             name="albumAdapter"
-            type="com.vuthanhvt.musicplayer.screen.detailartist.adapter.NumberAlbumInArtistAdapter" />
+            type="com.vuthanhvt.musicplayer.screen.detailartist.adapter.AlbumsOfArtistAdapter" />
 
         <variable
             name="songAdapter"
-            type="com.vuthanhvt.musicplayer.screen.detailartist.adapter.NumberSongInArtistAdapter" />
+            type="com.vuthanhvt.musicplayer.screen.detailartist.adapter.SongsOfArtistAdapter" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -67,19 +67,18 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite">
+                android:background="@color/colorWhite"
+                android:layout_marginTop="@dimen/dp_20">
 
                 <RelativeLayout
+                    android:id="@+id/number_album"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_20">
+                    android:layout_height="wrap_content">
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_0_5"
                         android:layout_centerInParent="true"
-                        android:layout_marginStart="@dimen/dp_30"
-                        android:layout_marginEnd="@dimen/dp_30"
                         android:background="@color/colorGray"/>
 
                     <TextView
@@ -92,13 +91,24 @@
                         android:text="@{ presenter.mNumberAlbum }"
                         android:background="@color/colorWhite"
                         tools:text="Albums (0)"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/dp_50"
+                        android:background="@drawable/ic_drop_down"/>
                 </RelativeLayout>
 
-                <!--<android.support.v7.widget.RecyclerView
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/albums_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_45"
-                    bind:adapter="@{ albumAdapter }"/>-->
+                    android:layout_below="@id/number_album"
+                    android:layout_marginStart="@dimen/dp_30"
+                    android:layout_marginEnd="@dimen/dp_30"
+                    bind:adapter="@{ albumAdapter }"
+                    bind:orientation="@{ @integer/horizontal }"/>
 
             </RelativeLayout>
 
@@ -109,16 +119,14 @@
                 android:background="@color/colorWhite">
 
                 <RelativeLayout
+                    android:id="@+id/number_song"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_20">
+                    android:layout_height="wrap_content">
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_0_5"
                         android:layout_centerInParent="true"
-                        android:layout_marginStart="@dimen/dp_30"
-                        android:layout_marginEnd="@dimen/dp_30"
                         android:background="@color/colorGray"/>
 
                     <TextView
@@ -133,11 +141,11 @@
                         tools:text="Songs (0)"/>
                 </RelativeLayout>
 
-                <!--<android.support.v7.widget.RecyclerView
+                <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_45"
-                    bind:adapter="@{ songAdapter }"/>-->
+                    android:layout_below="@id/number_song"
+                    bind:adapter="@{ songAdapter }"/>
             </RelativeLayout>
         </LinearLayout>
 

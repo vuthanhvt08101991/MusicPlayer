@@ -69,6 +69,16 @@ public class Artist implements Parcelable {
         this.mName = mName;
     }
 
+    public String toStringFromNumberSong() {
+        return mNumberSong <= 1 ? String.valueOf(mNumberSong) + " song" :
+                String.valueOf(mNumberSong) + " songs";
+    }
+
+    public String toStringFromNumberAlbum() {
+        return mNumberAlbum <= 1 ? String.valueOf(mNumberAlbum) + " album" :
+                String.valueOf(mNumberAlbum) + " albums";
+    }
+
     public Artist() {
         this.mID = -1;
         this.mName = "";
