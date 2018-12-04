@@ -1,6 +1,10 @@
 package com.vuthanhvt.musicplayer.screen.detailartist;
 
 import com.vuthanhvt.musicplayer.base.BaseView;
+import com.vuthanhvt.musicplayer.model.Album;
+import com.vuthanhvt.musicplayer.model.Song;
+
+import java.util.List;
 
 /**
  * Create by FRAMGIA\vu.anh.thanh on 30/11/2018.
@@ -10,4 +14,6 @@ import com.vuthanhvt.musicplayer.base.BaseView;
  * Interface DetailArtistView.
  */
 public interface DetailArtistView extends BaseView<DetailArtistPresenter> {
+
+    void getDetailArtistSuccess(List<Album> albums, List<Song> songs);
 }

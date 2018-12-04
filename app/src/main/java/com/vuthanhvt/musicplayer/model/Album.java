@@ -99,6 +99,11 @@ public class Album implements Parcelable {
         this.mYear = mYear;
     }
 
+    public String toStringFromNumberSong() {
+        return mNumberSong <= 1 ? String.valueOf(getNumberSong()) + " song" :
+                String.valueOf(getNumberSong()) + " songs";
+    }
+
     public Album() {
         this.mID = -1;
         this.mTitle = "";

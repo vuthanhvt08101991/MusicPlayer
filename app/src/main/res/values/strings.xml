@@ -35,7 +35,6 @@
     <string name="artists_title">Artist</string>
 
     <!--artist fragment-->
-    <string name="number_song_and_album">%2d albums | %2d songs</string>
     <string name="action_sort_by">Sort by</string>
 
     <!--detail album screen -->
@@ -54,4 +53,5 @@
     <!--detail artist-->
     <string name="number_album">Albums (%d)</string>
     <string name="number_song">Songs (%d)</string>
+    <string name="album_in_item_song">Album: </string>
 </resources>

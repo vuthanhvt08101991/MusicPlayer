@@ -84,10 +84,11 @@ public class AllArtistsAdapter
         public void bindData(Artist artist) {
             super.bindData(artist);
             mBinding.setItemArtist(artist);
-            nbAlbum = mUserRepository.countAlbumsOfSpecialArtist(mContext, artist.getID());
-            nbSong = mUserRepository.countSongsOfSpecialArtist(mContext, artist.getID());
-            mBinding.setNumberAlbumAndSong(mContext.getString(
-                    R.string.number_song_and_album, nbAlbum, nbSong));
+            nbAlbum = artist.getNumberAlbum();
+//            nbSong = mUserRepository.countSongsOfSpecialArtist(mContext, artist.getID());
+            nbSong = artist.getNumberSong();
+            mBinding.setNumberAlbumAndSong(artist.toStringFromNumberAlbum() + " | "
+                    + artist.toStringFromNumberSong());
         }
     }
 

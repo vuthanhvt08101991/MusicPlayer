@@ -128,9 +128,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_0_5"
-                    android:layout_marginStart="@dimen/dp_40"
-                    android:layout_marginEnd="@dimen/dp_40"
-                    android:background="@color/colorGray"
+                    android:background="@color/text_black"
                     android:layout_below="@id/title_track_number"
                     android:layout_marginTop="@dimen/dp_10"/>
             </RelativeLayout>
@@ -139,7 +137,6 @@
                 android:id="@+id/songs_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
                 bind:adapter="@{ adapter }"/>
         </LinearLayout>
 
