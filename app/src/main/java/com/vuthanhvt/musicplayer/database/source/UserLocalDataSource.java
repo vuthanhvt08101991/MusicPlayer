@@ -121,7 +121,7 @@ public class UserLocalDataSource implements IUserLocalDataSource {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "getListAlbumsOfSpecialArtist: ");
         }
-        return MusicDB.getMusicDB(context).getAlbumDAOAccess().getListAlbumsOfSpecialArtist(artistID);
+        return AlbumLoader.getAlbumsForArtist(context, artistID);
     }
 
     @Override

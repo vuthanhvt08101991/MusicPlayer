@@ -53,4 +53,45 @@ public class AlbumLoader {
             cursor.close();
         return arrayList;
     }
+
+    public static ArrayList<Album> getAlbumsForArtist(Context context, long artistID) {
+        ArrayList albumList = new ArrayList();
+        Cursor cursor = makeAlbumForArtistCursor(context, null, null, artistID);
+        if (cursor != null) {
+            if (cursor.moveToFirst())
+                do {
+                    long id = cursor.getLong(0);
+                    String title = cursor.getString(1);
+                    String artistName = cursor.getString(2);
+                    int nbSongs = cursor.getInt(3);
+                    int year = cursor.getInt(4);
+
+
+                    Album album = new Album(id, title, artistName, artistID, nbSongs, year);
+                    albumList.add(album);
+                } while (cursor.moveToNext());
+        }
+        if (cursor != null)
+            cursor.close();
+        return albumList;
+    }
+
+
+    public static Cursor makeAlbumForArtistCursor(Context context, String condition,
+                                                  String[] parameter, long artistID) {
+        String[] projection = {
+                MediaStore.Audio.Albums._ID,
+                MediaStore.Audio.Albums.ALBUM,
+                MediaStore.Audio.Albums.ARTIST,
+                MediaStore.Audio.Albums.NUMBER_OF_SONGS,
+                MediaStore.Audio.Albums.FIRST_YEAR,
+        };
+        Cursor cursor = context.getContentResolver().query(
+                MediaStore.Audio.Artists.Albums.getContentUri("external", artistID),
+                projection,
+                condition,
+                parameter,
+                MediaStore.Audio.Albums.ALBUM);
+        return cursor;
+    }
 }
