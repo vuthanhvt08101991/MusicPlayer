@@ -65,6 +65,28 @@ public class DetailArtistActivity
                     Log.d(TAG, "initData: mArtistChosen = " + mArtistChosen.toString());
                 }
                 setupActionBar(mArtistChosen);
+                mBinding.numberAlbum.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!mBinding.expandedAlbumView.isExpanded()) {
+                            mBinding.icExpandingAlbumList.animate().rotation(180).setDuration(200);
+                        } else {
+                            mBinding.icExpandingAlbumList.animate().rotation(0).setDuration(200);
+                        }
+                        mBinding.expandedAlbumView.toggle();
+                    }
+                });
+                mBinding.numberSong.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!mBinding.expandedSongView.isExpanded()) {
+                            mBinding.icExpandingSongList.animate().rotation(180).setDuration(200);
+                        } else {
+                            mBinding.icExpandingSongList.animate().rotation(0).setDuration(200);
+                        }
+                        mBinding.expandedSongView.toggle();
+                    }
+                });
                 mPresenter.getDetailArtist(mArtistChosen, mNumberAlbums, mNumberSongs);
             }
         }
@@ -100,6 +122,7 @@ public class DetailArtistActivity
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "mAlbumsOfArtistAdapter: onItemClick: ");
                 }
+                mPresenter.goToDetailAlbum(data);
             }
         });
         mBinding.setAlbumAdapter(mAlbumsOfArtistAdapter);
